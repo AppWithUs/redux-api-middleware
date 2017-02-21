@@ -14,6 +14,8 @@ async function getJSON(res) {
 
   if (!~emptyCodes.indexOf(res.status) && contentType && ~contentType.indexOf('json')) {
     return await res.json();
+  } else if (res.error) {
+    return await Promise.reject();
   } else {
     return await Promise.resolve();
   }
